@@ -1,0 +1,39 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Stock prices of four large companies as a small multiples of area charts.",
+    "transform": [{"filter": {"field": "Country/Region", "oneOf": ["Malaysia", "China", "Indonesia", "Japan", "Singapore"]}}],
+    "width": 350,
+    "height": 35,
+    "data": {"url": "full_grouped.csv"},
+    "mark": "area",
+    "encoding": {
+      "x": {
+        "field": "Date",
+        "timeUnit": "yearmonthdate",
+        "title": "Date",
+        "axis": {"grid": false}
+      },
+      "y": {
+        "field": "Confirmed",
+        "type": "quantitative",
+        "title": null,
+        "axis": {"grid": false}
+      },
+      "color": {
+        "field": "Country/Region",
+        "type": "nominal",
+        "legend": null
+      },
+      "row": {
+        "field": "Country/Region",
+        "type": "nominal",
+        "title": "Country/Region"
+      },
+      "tooltip": [
+        {"timeUnit": "yearmonthdate", "field": "Date", "title": "Date"},
+        {"field": "Country/Region", "type": "nominal"},
+        {"field": "Confirmed", "type": "quantitative"}
+
+      ]
+    }
+  }

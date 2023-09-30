@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.1.0.json",
+    "width": 350, "height": 250,
+    "data": {"url": "BumpChart.csv"},
+      "params": [
+          { "name": "number_of_countries", "value": 5 ,
+              "bind": {"input": "range", "min": 1, "max": 10, "step": 1 }
+          },
+          { "name": "the_year", "value": 2020 ,
+            "bind": {"input": "select", "options": [2020, 2021, 2022] },
+              "anchor": "left"
+          }
+      ],
+  
+      "transform": [{ 
+      "sort": [
+        {"field": "New_cases", "order": "descending"}
+          ],
+          "window": [{
+            "op": "rank",
+            "as": "rank"
+          }],
+          "groupby": [ "Year", "Month"]
+        },
+      { "filter": "datum.rank <= number_of_countries" },
+            { "filter": "datum.Year == the_year" }
+        ],
+  
+          "encoding": {
+        "x": {  "field": "Month",
+              "type": "ordinal", "sort": ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+              "axis": { "labelAngle": 0 , "labelFontSize": 12 , "titleFontSize": 14},
+              "title": "Month"
+              } ,
+        "y": {  "field": "rank",
+                "type": "quantitative",
+                "sort": "descending",
+                "scale": {"domain": [0.5, {"expr": "number_of_countries+0.5"} ]},
+                "axis": { "labelAngle": 0 , "labelFontSize": 12 ,
+                          "tickMinStep": 1 ,
+                          "tickCount": {"expr": "number_of_countries"},
+                          "titleFontSize": 14 },
+                "title":  "Country's ranking"
+              },
+              "tooltip": [
+                {"field": "Year", "type": "ordinal"},
+                {"field": "Month", "type": "ordinal"},
+                {"field": "Country", "type": "nominal"},
+                {"field": "New_cases", "type": "quantitative", "as": "New cases"}
+              ]
+        } ,
+  
+  
+      "layer": [
+        {
+          "mark": {"type": "line", "interpolate": "monotone" },
+          "encoding": {
+              "color": { "field": "Country" } ,
+        "size":{
+            "condition":  {"param": "country_legend", "empty": false, "value": 3},
+            "value": 1
+          }
+          }
+      },
+      {
+      "params": [
+        { "name": "country_legend", "select": {"type": "point" ,  "on": "click",  "fields": ["Country"]},
+          "bind": "legend"
+        }
+      ],
+          "mark": {"type" :"tick", "thickness": 5 },
+          "encoding": {
+              "color": {
+            "condition":  {"param": "country_legend", "empty": false, "value": "black"} ,
+            "field": "Country"
+        }
+          }
+  
+      }
+  ]
+  
+    }

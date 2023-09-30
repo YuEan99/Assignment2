@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": { "url": "WHO-COVID-19-global-data.csv" },
+  "transform": [{"filter": {"field": "Country", "oneOf": ["Malaysia"]}}],
+  "vconcat": [{
+      "width": 480,
+      "height": 200,
+      "mark": "area",
+      "encoding": {
+          "x": {
+              "field": "Date_reported", "timeUnit": "yearmonthdate",
+              "type": "temporal", "title": "Date", 
+              "scale": { "domain": { "param": "brush" } },
+              "axis": { "title": "", "tickCount": 10, "grid": false }
+          },
+          "y": { "field": "New_cases", "type": "quantitative" , "axis": {"grid": false}, "title": "Daily new cases"}
+      }
+  }, {
+      "width": 480,
+      "height": 50,
+      "mark": "area",
+      "params": [{
+          "name": "brush",
+          "select": { "type": "interval", "encodings": ["x"] }
+      }],
+      "encoding": {
+          "x": {
+              "field": "Date_reported", "timeUnit": "yearmonthdate",
+              "type": "temporal", "title": "Date", 
+              "axis": { "tickCount": 10, "grid": false }
+          },
+          "y": {
+              "field": "New_cases",
+              "type": "quantitative",
+              "axis": { "tickCount": 3, "grid": false },
+              "title": "Daily new cases"
+          }
+      }
+  }]
+}

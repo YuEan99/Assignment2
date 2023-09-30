@@ -1,0 +1,39 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "width": 350,
+    "height": 250,
+    "data": {"url": "worldometer_data.csv"},
+    "mark": {"type": "arc", "innerRadius": 50},
+    "encoding": {
+      "theta": {"aggregate": "sum", "field": "TotalTests", "type": "quantitative"},
+      "color": {
+        "field": "Continent",
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "North America",
+            "South America",
+            "Europe",
+            "Africa",
+            "Asia",
+            "Australia/Oceania"
+          ],
+          "range": [
+            "#e41a1c",
+            "#984ea3",
+            "#ff7f00",
+            "#a6cee3",
+            "#377eb8",
+            "#a65628"
+          ]
+        }
+      },
+      "tooltip": [
+        {"field": "Continent", "type": "nominal"},
+        {"field": "Population", "type": "nominal"},
+        {"field": "TotalTests", "type": "quantitative", "title": "Total Tests"},
+        {"field": "TotalCases", "type": "quantitative", "title": "Total Cases"}
+      ]
+    },
+    "view": {"stroke": null}
+  }
