@@ -13,7 +13,11 @@
               "scale": { "domain": { "param": "brush" } },
               "axis": { "title": "", "tickCount": 10, "grid": false }
           },
-          "y": { "field": "New_cases", "type": "quantitative" , "axis": {"grid": false}, "title": "Daily new cases"}
+          "y": { "field": "New_cases", "type": "quantitative" , "axis": {"grid": false}, "title": "Daily new cases"},
+          "tooltip": [
+              { "field": "Date_reported", "type": "temporal", "title": "Date" },
+                { "field": "New_cases", "type": "quantitative", "title": "Daily new cases" }
+          ]
       }
   }, {
       "width": 480,
