@@ -2,12 +2,16 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 350,
   "height": 250,
+  "data": {
+    "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+  },
   "params": [{
       "name": "zoom_level",
       "value": 250,
       "bind": {
       "input": "range",
-      "min": 100,
+      "min": 75,
       "max": 650,
       "step": 50,
       "name": "Zoom: "
@@ -170,7 +174,7 @@
       "text": {"field": "properties.NAME", "type": "nominal"},
       "opacity": {
         "condition": {
-          "test": "datum['properties.NAME'] == 'United States of America' || datum['properties.NAME'] == 'Canada' || datum['properties.NAME'] == 'Mexico'",
+          "test": "datum['properties.NAME'] == 'United States of America' || datum['properties.NAME'] == 'Canada' || datum['properties.NAME'] == 'Mexico' || datum['properties.NAME'] == 'Malaysia' || datum['properties.NAME'] == 'Brazil' || datum['properties.NAME'] == 'Russia' || datum['properties.NAME'] == 'India' || datum['properties.NAME'] == 'South Africa'" ,
           "value": 1
         },
         "value": 0

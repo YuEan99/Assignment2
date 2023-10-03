@@ -2,12 +2,16 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 350,
     "height": 250,
+    "data": {
+      "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+      "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    },
     "params": [{
       "name": "zoom_level",
       "value": 250,
       "bind": {
       "input": "range",
-      "min": 100,
+      "min": 75,
       "max": 650,
       "step": 50,
       "name": "Zoom: "
@@ -92,5 +96,23 @@
         },
         "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
       }
-    ]
+      ,
+  {
+    "data": {
+      "url": "Continent_location.csv"
+    },
+    "mark": {
+      "type": "text",
+      "color": "black",
+      "fontWeight": "bolder",
+      "fontSize": 13
+    },
+    "encoding": {
+      "text": {"field": "Continent", "type": "nominal"},
+      "latitude": {"field": "Latitude", "type": "quantitative"},
+      "longitude": {"field": "Longitude", "type": "quantitative"}
+    }
+  }
+  ],
+  "config": {}
   }
