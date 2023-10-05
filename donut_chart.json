@@ -3,7 +3,7 @@
     "width": 350,
     "height": 250,
     "data": {"url": "worldometer_data.csv"},
-    "mark": {"type": "arc", "innerRadius": 50},
+    "layer": [{"mark": {"type": "arc", "innerRadius": 50},
     "encoding": {
       "theta": {"aggregate": "sum", "field": "TotalTests", "type": "quantitative"},
       "color": {
@@ -35,5 +35,34 @@
         {"field": "TotalCases", "type": "quantitative", "title": "Total Cases"}
       ]
     },
-    "view": {"stroke": null}
+    "view": {"stroke": null}},
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "fontWeight": "bold",
+        "dx": 120,
+        "dy": 100,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {
+          "value": [
+            "Europe has more tests than Asia ",
+            "despite having a smaller population"
+          ]
+        },
+        "opacity": {
+          "condition": [
+            {
+              "test": "datum['Country/Region'] == 'Spain' && datum['Continent'] == 'Europe'",
+              "value": 1
+            }
+          ],
+          "value": 0
+        }
+      }
+    }]
   }
