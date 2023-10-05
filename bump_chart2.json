@@ -75,8 +75,180 @@
             "field": "Country"
         }
           }
-  
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "fontWeight": "bold",
+          "dx": -10,
+          "dy": -15,
+          "fontSize": 11.5,
+          "fontStyle": "italic",
+          "color": "orange"
+        },
+        "encoding": {
+          "text": {
+            "value": [
+              "China"
+            ]
+          },
+          "opacity": {
+            "condition": [
+              {
+                "test": "datum['Country'] == 'China' && datum['Month'] == 'Jan' && datum['Year'] == '2020'",
+                "value": 1
+              }
+            ],
+            "value": 0
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "fontWeight": "bold",
+          "dx": -25,
+          "dy": -15,
+          "fontSize": 11.5,
+          "fontStyle": "italic",
+          "color": "pink"
+        },
+        "encoding": {
+          "text": {
+            "value": [
+              "Russia"
+            ]
+          },
+          "opacity": {
+            "condition": [
+              {
+                "test": "datum['Country'] == 'Russia' && datum['Month'] == 'Dec' && datum['Year'] == '2020'",
+                "value": 1
+              }
+            ],
+            "value": 0
+          }
+        }
+      }, 
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "fontWeight": "bold",
+          "dx": -25,
+          "dy": -15,
+          "fontSize": 11.5,
+          "fontStyle": "italic",
+          "color": "pink"
+        },
+        "encoding": {
+          "text": {
+            "value": [
+              "Russia"
+            ]
+          },
+          "opacity": {
+            "condition": [
+              {
+                "test": "datum['Country'] == 'Russia' && datum['Month'] == 'Dec' && datum['Year'] == '2021'",
+                "value": 1
+              }
+            ],
+            "value": 0
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "fontWeight": "bold",
+          "dx": -25,
+          "dy": 15,
+          "fontSize": 11.5,
+          "fontStyle": "italic",
+          "color": "orange"
+        },
+        "encoding": {
+          "text": {
+            "value": [
+              "China"
+            ]
+          },
+          "opacity": {
+            "condition": [
+              {
+                "test": "datum['Country'] == 'China' && datum['Month'] == 'Dec' && datum['Year'] == '2021'",
+                "value": 1
+              }
+            ],
+            "value": 0
+          }
+        }
+      }, 
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "fontWeight": "bold",
+          "dx": -20,
+          "dy": 10,
+          "fontSize": 11.5,
+          "fontStyle": "italic",
+          "color": "pink"
+        },
+        "encoding": {
+          "text": {
+            "value": [
+              "Russia"
+            ]
+          },
+          "opacity": {
+            "condition": [
+              {
+                "test": "datum['Country'] == 'Russia' && datum['Month'] == 'Oct' && datum['Year'] == '2022'",
+                "value": 1
+              }
+            ],
+            "value": 0
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "fontWeight": "bold",
+          "dx": -20,
+          "dy": -15,
+          "fontSize": 11.5,
+          "fontStyle": "italic",
+          "color": "orange"
+        },
+        "encoding": {
+          "text": {
+            "value": [
+              "China"
+            ]
+          },
+          "opacity": {
+            "condition": [
+              {
+                "test": "datum['Country'] == 'China' && datum['Month'] == 'Dec' && datum['Year'] == '2022'",
+                "value": 1
+              }
+            ],
+            "value": 0
+          }
+        }
       }
   ]
-  
     }

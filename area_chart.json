@@ -1,28 +1,69 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 460, "height": 310,
+  "width": 460,
+  "height": 310,
   "data": {"url": "full_grouped.csv"},
-  "mark": "area",
-  "transform": [{"filter": {"field": "Country/Region", "oneOf": ["Peru", "Russia", "India", "Brazil", "US"]}}],
-  "encoding": {
-    "x": {
-      "timeUnit": "yearmonthdate", "field": "Date", "title": "Date",
-      "axis": {"format": "%b %d", "grid": false}
+  "layer": [
+    {
+      "mark": "area",
+      "transform": [
+        {"filter": {"field": "Country/Region", "oneOf": ["Peru", "Russia", "India", "Brazil", "US"]}}
+      ],
+      "encoding": {
+        "x": {
+          "timeUnit": "yearmonthdate",
+          "field": "Date",
+          "title": "Date",
+          "axis": {"format": "%b %d", "grid": false}
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "Confirmed",
+          "axis": {"grid": false},
+          "title": "Confirmed Cases"
+        },
+        "color": {
+          "field": "Country/Region",
+          "title": "Country"
+        },
+        "tooltip": [
+          {"timeUnit": "yearmonthdate", "field": "Date", "title": "Date"},
+          {"field": "Country/Region", "type": "nominal", "title": "Country"},
+          {"field": "Confirmed", "type": "quantitative"},
+          {"field": "Deaths", "type": "quantitative"},
+          {"field": "Recovered", "type": "quantitative"},
+          {"field": "Active", "type": "quantitative"}
+        ]
+      }
     },
-    "y": {
-      "aggregate": "sum", "field": "Confirmed", "axis": {"grid": false}, "title": "Confirmed Cases"
-    },
-    "color": {
-      "field": "Country/Region", "title": "Country"
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "fontWeight": "bold",
+        "dx": -210,
+        "dy": 100,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {
+          "value": [
+            "The number of comfirmed cases",
+            "increases significantly since April 2020"
+          ]
+        },
+        "opacity": {
+          "condition": [
+            {
+              "test": "datum['Confirmed'] == 214205",
+              "value": 1
+            }
+          ],
+          "value": 0
+        }
+      }
     }
-    ,
-    "tooltip": [
-      {"timeUnit": "yearmonthdate", "field": "Date", "title": "Date"},
-      {"field": "Country/Region", "type": "nominal", "title": "Country"},
-      {"field": "Confirmed", "type": "quantitative"},
-      {"field": "Deaths", "type": "quantitative"},
-      {"field": "Recovered", "type": "quantitative"},
-      {"field": "Active", "type": "quantitative"}
-    ]
-  }
+  ]
 }
