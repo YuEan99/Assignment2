@@ -63,8 +63,7 @@
         "params": [
           {"name": "hover", "select": {"type": "point", "on": "mouseover"}}
         ],
-        "mark": {"type": "circle", 
-        "tooltip": {"content": "data"}},
+        "mark": {"type": "circle"},
         "encoding": {
           "longitude": {"field": "Longitude", "type": "quantitative"},
           "latitude": {"field": "Latitude", "type": "quantitative"},
@@ -72,14 +71,20 @@
             "field": "Confirmed",
             "type": "quantitative",
             "title": "Confirmed Cases (Richter scale)",
-            "scale": {"domain": [10, 4290259]}
+            "scale": {"domain": [100, 100000, 1000000, 2000000, 4000000],
+            "range": [20, 50, 100, 200, 500, 800]}
           },
           "color": {
             "field": "Deaths",
             "type": "quantitative",
             "title": "Deaths",
             "scale": {"scheme": "reds"}
-          }
+          },
+          "tooltip": [
+            {"field": "Country/Region", "type": "nominal", "title":"Country"},
+            {"field": "Confirmed", "type": "quantitative", "format": ","},
+            {"field": "Deaths", "type": "quantitative", "format": ","}
+          ]
         }
       },
       {
