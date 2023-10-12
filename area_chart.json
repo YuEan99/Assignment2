@@ -24,7 +24,19 @@
         },
         "color": {
           "field": "Country/Region",
-          "title": "Country"
+          "title": "Country",
+          "scale": {
+            "domain": [
+              "Peru", "Russia", "India", "Brazil", "US"
+            ],
+            "range": [
+              "#984ea3",
+              "#22a293",
+              "orange",
+              "blue",
+              "green"
+            ]
+          }
         },
         "tooltip": [
           {"timeUnit": "yearmonthdate", "field": "Date", "title": "Date"},
